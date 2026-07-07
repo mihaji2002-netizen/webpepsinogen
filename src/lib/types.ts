@@ -9,6 +9,16 @@ export type Difficulty = 'آسان' | 'متوسط' | 'سخت' | 'کشنده';
 /** Kind of question — used by the "question type" filter. */
 export type QuestionType = 'تشریحی' | 'تستی' | 'جای‌خالی' | 'صحیح-غلط' | 'ترکیبی';
 
+/**
+ * One line of the "بارم‌شکن" (grading rubric). Each line is a scorable part of
+ * the answer; the sum of `score` across items should equal the question's total
+ * `score`. Students tick the parts they got right to self-grade.
+ */
+export interface RubricItem {
+  point: string; // بخشی از پاسخ که نمره دارد
+  score: number; // بارمِ همان بخش
+}
+
 /** A single classified question record (matches the JSON schema on disk). */
 export interface Question {
   id: string;
@@ -25,6 +35,7 @@ export interface Question {
   difficulty: Difficulty;
   repeat_probability: number; // احتمال تکرار (0-100)
   keywords?: string[]; // کلیدواژه‌ها برای جست‌وجو
+  rubric?: RubricItem[]; // بارم‌شکن — تفکیک نمره برای خودارزیابی
 }
 
 /** A single exam file (e.g. biology/khordad1404.json). */

@@ -17,7 +17,12 @@
       "score": 1.5,
       "difficulty": "متوسط",
       "repeat_probability": 86,
-      "keywords": ["passive", "مجهول", "grammar", "past participle", "were", "انگلیسی"]
+      "keywords": ["passive", "مجهول", "grammar", "past participle", "were", "انگلیسی"],
+      "rubric": [
+        { "point": "آوردن مفعول در ابتدای جمله (The exam papers)", "score": 0.5 },
+        { "point": "استفاده‌ی درست از «were» (زمان گذشته)", "score": 0.5 },
+        { "point": "تبدیل فعل اصلی به اسم‌مفعول (corrected)", "score": 0.5 }
+      ]
     },
     {
       "id": "en-kh-1404-02",
@@ -33,7 +38,10 @@
       "score": 1.0,
       "difficulty": "آسان",
       "repeat_probability": 70,
-      "keywords": ["vocabulary", "pollution", "population", "جای خالی", "انگلیسی"]
+      "keywords": ["vocabulary", "pollution", "population", "جای خالی", "انگلیسی"],
+      "rubric": [
+        { "point": "انتخاب واژه‌ی درست: «pollution»", "score": 1.0 }
+      ]
     },
     {
       "id": "en-kh-1404-03",
@@ -49,7 +57,10 @@
       "score": 0.75,
       "difficulty": "متوسط",
       "repeat_probability": 75,
-      "keywords": ["relative clause", "who", "which", "whose", "grammar", "انگلیسی"]
+      "keywords": ["relative clause", "who", "which", "whose", "grammar", "انگلیسی"],
+      "rubric": [
+        { "point": "انتخاب گزینه‌ی درست: «who»", "score": 0.75 }
+      ]
     },
     {
       "id": "en-kh-1404-04",
@@ -65,7 +76,11 @@
       "score": 1.0,
       "difficulty": "آسان",
       "repeat_probability": 68,
-      "keywords": ["reading", "recycling", "true false", "waste", "انگلیسی"]
+      "keywords": ["reading", "recycling", "true false", "waste", "انگلیسی"],
+      "rubric": [
+        { "point": "تشخیص درست: «False»", "score": 0.5 },
+        { "point": "درک تضاد میان increase و reduce در متن", "score": 0.5 }
+      ]
     }
   ]
 }

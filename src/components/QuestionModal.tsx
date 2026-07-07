@@ -4,6 +4,7 @@ import type { Question } from '../lib/types';
 import type { AccentTheme } from '../lib/accents';
 import { DifficultyBadge, GlowButton, Stamp } from './Primitives';
 import { toFa } from '../lib/format';
+import RubricSelfScore from './RubricSelfScore';
 
 /** Labeled classified section block used for each analysis part. */
 function Section({
@@ -181,6 +182,14 @@ export default function QuestionModal({
                   <Section icon="✅" title="پاسخ رسمی" color={accent.base}>
                     {question.answer}
                   </Section>
+                  {question.rubric && question.rubric.length > 0 && (
+                    <RubricSelfScore
+                      rubric={question.rubric}
+                      total={question.score}
+                      accent={accent.base}
+                      storageKey={`dossier:rubric:${question.id}`}
+                    />
+                  )}
                   <Section icon="🔎" title="تحلیل و توضیح کامل" color="#4c8dff">
                     {question.analysis}
                   </Section>
