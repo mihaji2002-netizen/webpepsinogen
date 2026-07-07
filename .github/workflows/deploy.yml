@@ -46,27 +46,11 @@ jobs:
       - name: Add SPA 404 fallback
         run: cp dist/index.html dist/404.html
 
-      # Force Pages into "workflow" (GitHub Actions) build type. Without this,
-      # Pages can fall back to legacy branch mode and serve the repo root
-      # (raw source) instead of our built `dist`, which 404s every data file.
-      - name: Ensure Pages uses GitHub Actions build type
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          # Enable Pages in workflow mode (create if missing, else update).
-          curl -sS -X POST \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow"}' || true
-          curl -sS -X PUT \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow"}' || true
-
+      # NOTE: This requires GitHub Pages "Source" to be set to **GitHub Actions**
+      # (Settings → Pages → Build and deployment → Source). The default token
+      # cannot change that setting via the API (403), so it's a one-time manual
+      # toggle. In legacy "Deploy from a branch" mode this workflow is ignored
+      # and the raw repo root is served instead (which 404s the built assets).
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
