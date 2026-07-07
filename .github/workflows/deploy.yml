@@ -46,8 +46,12 @@ jobs:
       - name: Add SPA 404 fallback
         run: cp dist/index.html dist/404.html
 
+      # `enablement: true` turns GitHub Pages on automatically via the API using
+      # the workflow token (needs pages: write), so no manual Settings toggle.
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
