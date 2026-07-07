@@ -30,17 +30,20 @@ Home  →  Lesson  →  Exam (لیست سؤالات)  →  Question Dossier (م�
 
 ```
 public/data/
-  manifest.json          # فهرست درس‌ها، امتحان‌ها و شمارنده‌ها (درایورِ کل اپ)
-  biology/
-    khordad1404.json
-    shahrivar1404.json
+  manifest.json          # فهرست درس‌ها، رشته‌ها، امتحان‌ها و شمارنده‌ها (درایورِ کل اپ)
+  physics/
+    khordad1404.json     # فیزیک (۲) رشته ریاضی — ۲۰ سؤال واقعی نهایی
+  chemistry/
+    khordad1404.json     # شیمی (۲) — ۱۶ سؤال واقعی نهایی
     dey1404.json
-  chemistry/ …
+  biology/ …
   persian/ …
   arabic/ …
   religion/ …
   english/ …
 ```
+
+هر درس در `manifest.json` یک آرایه‌ی `tracks` دارد (`عمومی`، `ریاضی`، `تجربی`) که صفحه‌ی اصلی بر اساس آن درس‌ها را گروه‌بندی می‌کند. یک درس می‌تواند در چند رشته باشد (مثل شیمی که هم ریاضی و هم تجربی است).
 
 قالب هر سؤال:
 
