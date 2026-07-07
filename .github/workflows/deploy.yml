@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+# Builds the Vite app and publishes it to GitHub Pages.
+# Runs on pushes to the main branch, the feature branch, or manually.
+on:
+  push:
+    branches:
+      - main
+      - cursor/top-secret-final-dossier-391d
+  workflow_dispatch:
+
+# Permissions required by the Pages deploy action.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Base path must match the repo name for a GitHub Pages *project* site,
+      # i.e. served from https://<user>.github.io/<repo>/.
+      - name: Build
+        run: npm run build -- --base=/${{ github.event.repository.name }}/
+
+      # SPA fallback: GitHub Pages has no server rewrites, so a copy of
+      # index.html as 404.html makes deep links / refresh work.
+      - name: Add SPA 404 fallback
+        run: cp dist/index.html dist/404.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
