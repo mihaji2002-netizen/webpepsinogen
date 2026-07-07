@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   TOP SECRET FINAL DOSSIER — Design System
+   A dark, cinematic, "classified file" atmosphere.
+   Everything here is reusable and theme-driven.
+   ============================================================ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* Live mouse position, updated globally for the ambient glow. */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-900 text-slate-200 font-sans antialiased;
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Layered background: deep navy vignette + subtle grid + noise. */
+    background-color: #04060d;
+    background-image:
+      radial-gradient(1200px 800px at 15% -10%, rgba(76, 141, 255, 0.12), transparent 60%),
+      radial-gradient(1000px 700px at 100% 0%, rgba(255, 59, 71, 0.08), transparent 55%),
+      radial-gradient(900px 900px at 50% 120%, rgba(231, 182, 75, 0.06), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  /* Faint blueprint grid layered over the whole app. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(circle at 50% 30%, black, transparent 90%);
+  }
+
+  ::selection {
+    background: rgba(255, 59, 71, 0.35);
+    color: #fff;
+  }
+
+  /* Custom classified-looking scrollbar. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.22);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  /* Blurred glass surface — the primary building block of every card. */
+  .glass {
+    @apply relative rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+      0 20px 60px -20px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Soft glowing border used on interactive glass. */
+  .glass-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+  .glass-hover:hover {
+    @apply border-white/20 bg-white/[0.06];
+    transform: translateY(-4px);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+      0 30px 80px -30px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Monospace "stamp" label seen on classified documents. */
+  .stamp {
+    @apply inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em];
+    font-family: 'Courier New', ui-monospace, monospace;
+  }
+
+  /* The animated scanline that sells the "surveillance monitor" feel. */
+  .scanline {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .scanline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(76, 141, 255, 0.06),
+      transparent
+    );
+    animation: scan 6s linear infinite;
+  }
+
+  /* Handwritten signature for the Mehdi Haji brand mark. */
+  .signature {
+    font-family: 'Caveat', 'Vazirmatn', cursive;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transform: rotate(-4deg);
+  }
+
+  /* Gradient text used for premium headlines. */
+  .text-gradient {
+    background: linear-gradient(120deg, #fff 20%, #9fb4d8 60%, #4c8dff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
