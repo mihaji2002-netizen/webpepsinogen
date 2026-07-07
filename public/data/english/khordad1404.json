@@ -1,0 +1,71 @@
+{
+  "examId": "khordad1404",
+  "lessonId": "english",
+  "title": "زبان انگلیسی (۲) — خرداد ۱۴۰۴",
+  "questions": [
+    {
+      "id": "en-kh-1404-01",
+      "chapter": "Grammar — Passive Voice",
+      "type": "تشریحی",
+      "question": "جمله‌ی معلوم زیر را به مجهول (Passive) تبدیل کنید:\n«The teacher corrected the exam papers yesterday.»",
+      "answer": "The exam papers were corrected (by the teacher) yesterday.",
+      "analysis": "قانونِ مجهول: مفعول میاد اول، فعل «to be» هم‌زمان با زمان جمله، بعد اسم‌مفعول (past participle). چون گذشته‌ست: were + corrected. «by the teacher» اختیاریه.",
+      "designer_trap": "طراح فعل گذشته (corrected) رو گذاشته تا ببینه «to be» رو هم گذشته می‌کنی (were) یا اشتباهاً حال می‌ذاری (are).",
+      "common_mistake": "استفاده از «are/was» به‌جای «were»، و فراموش‌کردن تبدیل فعل اصلی به past participle.",
+      "night_tip": "فرمول مجهول: مفعول + (be در زمانِ جمله) + p.p. زمان جمله رو از فعلِ to be نشون بده، نه از فعل اصلی.",
+      "book_page": "Lesson 1 — Grammar",
+      "score": 1.5,
+      "difficulty": "متوسط",
+      "repeat_probability": 86,
+      "keywords": ["passive", "مجهول", "grammar", "past participle", "were", "انگلیسی"]
+    },
+    {
+      "id": "en-kh-1404-02",
+      "chapter": "Vocabulary",
+      "type": "جای‌خالی",
+      "question": "Fill in the blank with the correct word:\n«Air ............ is a serious problem in big cities.» (pollution / population)",
+      "answer": "pollution — «Air pollution is a serious problem in big cities.» (آلودگی هوا)",
+      "analysis": "دوتا کلمه‌ی شبیه‌به‌هم رو گذاشته: pollution (آلودگی) و population (جمعیت). با «Air» فقط pollution جور درمیاد.",
+      "designer_trap": "طراح population رو کنارش گذاشته چون شبیه pollutionه و بچه‌ها سریع و بدون دقت یکیشو انتخاب می‌کنن.",
+      "common_mistake": "انتخاب population به‌خاطر شباهت ظاهری دو کلمه.",
+      "night_tip": "این دوتا رو با هم حفظ کن: pollution=آلودگی، population=جمعیت. کلمه‌ی قبل/بعدِ جای خالی (اینجا Air) بهت می‌گه کدومه.",
+      "book_page": "Lesson 1 — Vocabulary",
+      "score": 1.0,
+      "difficulty": "آسان",
+      "repeat_probability": 70,
+      "keywords": ["vocabulary", "pollution", "population", "جای خالی", "انگلیسی"]
+    },
+    {
+      "id": "en-kh-1404-03",
+      "chapter": "Grammar — Relative Clauses",
+      "type": "تستی",
+      "question": "Choose the correct option:\n«The man ............ helped us was very kind.»\n1) which  2) who  3) whose  4) where",
+      "answer": "گزینه‌ی ۲: who — «The man who helped us was very kind.»",
+      "analysis": "ضمیر موصولی برای «انسان» می‌شه who. which برای اشیاست، whose برای مالکیت، where برای مکان. چون درباره‌ی man (انسان)ه، جواب whoست.",
+      "designer_trap": "طراح which رو گذاشته چون بچه‌ها گاهی همه‌ی موصول‌ها رو با which پر می‌کنن.",
+      "common_mistake": "انتخاب which برای انسان، و قاطی‌کردن who با whose.",
+      "night_tip": "who = برای آدم، which = برای شیء، whose = مالِ کی، where = کجا. اول ببین اسم قبلش آدمه یا شیء.",
+      "book_page": "Lesson 2 — Grammar",
+      "score": 0.75,
+      "difficulty": "متوسط",
+      "repeat_probability": 75,
+      "keywords": ["relative clause", "who", "which", "whose", "grammar", "انگلیسی"]
+    },
+    {
+      "id": "en-kh-1404-04",
+      "chapter": "Reading Comprehension",
+      "type": "صحیح-غلط",
+      "question": "Read the sentence and decide True or False:\n«Recycling helps to reduce the amount of waste and save natural resources.»\nStatement: Recycling increases the amount of waste.",
+      "answer": "False — بازیافت (recycling) مقدار زباله را کاهش می‌دهد، نه افزایش؛ پس عبارت داده‌شده نادرست است.",
+      "analysis": "متن گفته recycling زباله رو «کم» می‌کنه (reduce)، ولی جمله‌ی سؤال گفته «افزایش» می‌ده (increase). این تضاد مستقیمه، پس False.",
+      "designer_trap": "طراح یه کلمه (reduce → increase) رو عوض کرده تا ببینه دقیق می‌خونی یا فقط چون کلمه‌ها آشنان می‌گی True.",
+      "common_mistake": "علامت‌زدن True چون کلمه‌های recycling و waste تو هر دو جمله هست، بدون توجه به فعل.",
+      "night_tip": "تو True/False همیشه فعلِ اصلی رو با متن بسنج، نه اسم‌ها رو. یه کلمه‌ی متضاد (increase/reduce) کلِ جمله رو غلط می‌کنه.",
+      "book_page": "Lesson 3 — Reading",
+      "score": 1.0,
+      "difficulty": "آسان",
+      "repeat_probability": 68,
+      "keywords": ["reading", "recycling", "true false", "waste", "انگلیسی"]
+    }
+  ]
+}

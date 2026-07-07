@@ -1,0 +1,100 @@
+{
+  "lessons": [
+    {
+      "id": "biology",
+      "name": "زیست‌شناسی",
+      "icon": "🧬",
+      "accent": "green",
+      "tagline": "طراح اینجا بیشتر از هر درسی دنبال جزئیاته. بریم پیداش کنیم.",
+      "image": "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=60",
+      "analyzedExams": 4,
+      "analyzedQuestions": 9,
+      "exams": [
+        { "id": "khordad1404", "title": "خرداد ۱۴۰۴", "period": "khordad", "file": "biology/khordad1404.json", "available": true },
+        { "id": "shahrivar1404", "title": "شهریور ۱۴۰۴", "period": "shahrivar", "file": "biology/shahrivar1404.json", "available": true },
+        { "id": "dey1404", "title": "دی ۱۴۰۴", "period": "dey", "file": "biology/dey1404.json", "available": true },
+        { "id": "future", "title": "امتحانات آینده", "period": "future", "available": false }
+      ]
+    },
+    {
+      "id": "chemistry",
+      "name": "شیمی",
+      "icon": "⚗️",
+      "accent": "gold",
+      "tagline": "نصف سؤالای شیمی با دقت تو محاسبه حل می‌شن. حواست به واحدها باشه.",
+      "image": "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1200&q=60",
+      "analyzedExams": 3,
+      "analyzedQuestions": 6,
+      "exams": [
+        { "id": "khordad1404", "title": "خرداد ۱۴۰۴", "period": "khordad", "file": "chemistry/khordad1404.json", "available": true },
+        { "id": "shahrivar1404", "title": "شهریور ۱۴۰۴", "period": "shahrivar", "available": false },
+        { "id": "dey1404", "title": "دی ۱۴۰۴", "period": "dey", "file": "chemistry/dey1404.json", "available": true },
+        { "id": "future", "title": "امتحانات آینده", "period": "future", "available": false }
+      ]
+    },
+    {
+      "id": "persian",
+      "name": "فارسی",
+      "icon": "📜",
+      "accent": "red",
+      "tagline": "معنی و آرایه رو دست‌کم نگیر؛ همین‌جاست که نمره‌ها می‌ره.",
+      "image": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=60",
+      "analyzedExams": 2,
+      "analyzedQuestions": 5,
+      "exams": [
+        { "id": "khordad1404", "title": "خرداد ۱۴۰۴", "period": "khordad", "file": "persian/khordad1404.json", "available": true },
+        { "id": "shahrivar1404", "title": "شهریور ۱۴۰۴", "period": "shahrivar", "available": false },
+        { "id": "dey1404", "title": "دی ۱۴۰۴", "period": "dey", "file": "persian/dey1404.json", "available": true },
+        { "id": "future", "title": "امتحانات آینده", "period": "future", "available": false }
+      ]
+    },
+    {
+      "id": "arabic",
+      "name": "عربی",
+      "icon": "🕌",
+      "accent": "cyan",
+      "tagline": "ترجمه رو کلمه‌به‌کلمه نخون؛ طراح دنبال معنی درسته.",
+      "image": "https://images.unsplash.com/photo-1584286595398-a59511e0649f?auto=format&fit=crop&w=1200&q=60",
+      "analyzedExams": 1,
+      "analyzedQuestions": 4,
+      "exams": [
+        { "id": "khordad1404", "title": "خرداد ۱۴۰۴", "period": "khordad", "file": "arabic/khordad1404.json", "available": true },
+        { "id": "shahrivar1404", "title": "شهریور ۱۴۰۴", "period": "shahrivar", "available": false },
+        { "id": "dey1404", "title": "دی ۱۴۰۴", "period": "dey", "available": false },
+        { "id": "future", "title": "امتحانات آینده", "period": "future", "available": false }
+      ]
+    },
+    {
+      "id": "religion",
+      "name": "دین و زندگی",
+      "icon": "☪️",
+      "accent": "violet",
+      "tagline": "آیه و ترجمه‌ش رو با هم حفظ کن؛ سؤالِ ترکیبی همینه.",
+      "image": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=60",
+      "analyzedExams": 1,
+      "analyzedQuestions": 4,
+      "exams": [
+        { "id": "khordad1404", "title": "خرداد ۱۴۰۴", "period": "khordad", "file": "religion/khordad1404.json", "available": true },
+        { "id": "shahrivar1404", "title": "شهریور ۱۴۰۴", "period": "shahrivar", "available": false },
+        { "id": "dey1404", "title": "دی ۱۴۰۴", "period": "dey", "available": false },
+        { "id": "future", "title": "امتحانات آینده", "period": "future", "available": false }
+      ]
+    },
+    {
+      "id": "english",
+      "name": "زبان انگلیسی",
+      "icon": "🌐",
+      "accent": "blue",
+      "tagline": "گرامر و واژه ثابته؛ فقط باید تله‌های تکراری رو بشناسی.",
+      "image": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=1200&q=60",
+      "analyzedExams": 1,
+      "analyzedQuestions": 4,
+      "exams": [
+        { "id": "khordad1404", "title": "خرداد ۱۴۰۴", "period": "khordad", "file": "english/khordad1404.json", "available": true },
+        { "id": "shahrivar1404", "title": "شهریور ۱۴۰۴", "period": "shahrivar", "available": false },
+        { "id": "dey1404", "title": "دی ۱۴۰۴", "period": "dey", "available": false },
+        { "id": "future", "title": "امتحانات آینده", "period": "future", "available": false }
+      ]
+    }
+  ]
+}
