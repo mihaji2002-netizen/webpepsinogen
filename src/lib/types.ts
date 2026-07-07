@@ -56,12 +56,16 @@ export interface ExamRef {
   available: boolean;
 }
 
+/** Academic tracks a lesson can belong to (drives the home grouping). */
+export type Track = 'عمومی' | 'ریاضی' | 'تجربی';
+
 /** Lesson metadata used to render the home grid and lesson pages. */
 export interface Lesson {
   id: string;
   name: string; // نام درس
   icon: string; // emoji/glyph rendered in the card
-  accent: 'red' | 'gold' | 'blue' | 'green' | 'violet' | 'cyan';
+  accent: 'red' | 'gold' | 'blue' | 'green' | 'violet' | 'cyan' | 'orange' | 'teal';
+  tracks: Track[]; // رشته‌هایی که این درس در آن‌ها ارائه می‌شود
   tagline: string; // یک جمله‌ی کوتاه به لحن مهدی حاجی
   image: string; // background image url (unsplash / gradient fallback)
   analyzedExams: number;

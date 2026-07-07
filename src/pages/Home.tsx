@@ -2,14 +2,23 @@ import { motion } from 'framer-motion';
 import { loadManifest } from '../lib/dataLoader';
 import { useAsync } from '../hooks/useAsync';
 import { toFa } from '../lib/format';
+import type { Lesson, Track } from '../lib/types';
 import Page from '../components/Page';
 import Loader from '../components/Loader';
 import LessonCard from '../components/LessonCard';
 import { Stamp } from '../components/Primitives';
 
+/** Track sections rendered on the home page, in display order. */
+const TRACK_SECTIONS: { track: Track; label: string; code: string; color: string }[] = [
+  { track: 'عمومی', label: 'دروس عمومی', code: 'GENERAL', color: '#3d7bff' },
+  { track: 'ریاضی', label: 'رشته ریاضی و فیزیک', code: 'MATH-PHYSICS', color: '#ff7a2d' },
+  { track: 'تجربی', label: 'رشته علوم تجربی', code: 'SCIENCES', color: '#20d17a' },
+];
+
 /**
- * Home / briefing screen. Renders the six lesson dossiers from the manifest.
- * Only the (tiny) manifest is fetched here — lesson question data stays lazy.
+ * Home / briefing screen. Renders the lesson dossiers from the manifest,
+ * grouped by academic track. Only the (tiny) manifest is fetched here —
+ * lesson question data stays lazy.
  */
 export default function Home() {
   const { data, loading, error } = useAsync(loadManifest, []);
@@ -28,8 +37,9 @@ export default function Home() {
       {/* Hero briefing */}
       <section className="relative mb-10 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-10">
         <div className="scanline opacity-40" />
-        <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-accent-red/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -right-10 h-56 w-56 rounded-full bg-accent-blue/20 blur-3xl" />
+        <div className="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full bg-accent-red/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-accent-blue/25 blur-3xl" />
+        <div className="pointer-events-none absolute right-1/3 top-1/2 h-40 w-40 rounded-full bg-accent-gold/15 blur-3xl" />
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -38,9 +48,9 @@ export default function Home() {
           className="relative"
         >
           <div className="mb-4 flex flex-wrap items-center gap-2">
-            <Stamp color="#ff3b47">TOP SECRET</Stamp>
-            <Stamp color="#e7b64b">GRADE&nbsp;11 · FINAL</Stamp>
-            <Stamp color="#4c8dff">PEPSINO&nbsp;LAB</Stamp>
+            <Stamp color="#ff2d55">TOP SECRET</Stamp>
+            <Stamp color="#ffb020">GRADE&nbsp;11 · FINAL</Stamp>
+            <Stamp color="#3d7bff">PEPSINO&nbsp;LAB</Stamp>
           </div>
 
           <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">
@@ -49,23 +59,14 @@ export default function Home() {
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
             ببین، اینجا قرار نیست بهت انگیزه‌ی الکی بدیم. قراره سؤالای نهایی رو
             دونه‌دونه باز کنیم، ببینیم طراح دقیقاً دنبال چیه و کجا می‌خواد گیرت
-            بندازه. هر درس یه پرونده‌ست؛ انتخاب کن و برو داخل.
+            بندازه. هر درس یه پرونده‌ست؛ رشته‌تو پیدا کن و برو داخل.
           </p>
 
           {totals && (
-            <div className="mt-6 flex flex-wrap gap-6">
-              <div className="flex flex-col">
-                <span className="text-2xl font-black text-white">{toFa(data!.lessons.length)}</span>
-                <span className="text-xs text-slate-400">درس</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-black text-white">{toFa(totals.exams)}</span>
-                <span className="text-xs text-slate-400">امتحان تحلیل‌شده</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-black text-white">{toFa(totals.questions)}</span>
-                <span className="text-xs text-slate-400">سؤال بررسی‌شده</span>
-              </div>
+            <div className="mt-6 flex flex-wrap gap-8">
+              <HeroStat value={data!.lessons.length} label="درس" />
+              <HeroStat value={totals.exams} label="امتحان تحلیل‌شده" />
+              <HeroStat value={totals.questions} label="سؤال بررسی‌شده" />
             </div>
           )}
         </motion.div>
@@ -78,21 +79,52 @@ export default function Home() {
         </p>
       )}
 
-      {data && (
-        <>
-          <div className="mb-4 flex items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-slate-500">
-              Select&nbsp;File
-            </span>
-            <span className="h-px flex-1 bg-white/10" />
-          </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {data.lessons.map((lesson, i) => (
-              <LessonCard key={lesson.id} lesson={lesson} index={i} />
-            ))}
-          </div>
-        </>
-      )}
+      {data &&
+        TRACK_SECTIONS.map((section) => {
+          const lessons = data.lessons.filter((l) => l.tracks.includes(section.track));
+          if (lessons.length === 0) return null;
+          return <TrackSection key={section.track} section={section} lessons={lessons} />;
+        })}
     </Page>
+  );
+}
+
+function HeroStat({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="flex flex-col">
+      <span className="text-2xl font-black text-white sm:text-3xl">{toFa(value)}</span>
+      <span className="text-xs text-slate-400">{label}</span>
+    </div>
+  );
+}
+
+function TrackSection({
+  section,
+  lessons,
+}: {
+  section: { label: string; code: string; color: string };
+  lessons: Lesson[];
+}) {
+  return (
+    <section className="mb-10">
+      <div className="mb-5 flex items-center gap-3">
+        <span
+          className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-bold text-white"
+          style={{ background: `${section.color}22`, boxShadow: `inset 0 0 0 1px ${section.color}66` }}
+        >
+          <span className="h-2 w-2 rounded-full" style={{ background: section.color }} />
+          {section.label}
+        </span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-600">
+          {section.code}
+        </span>
+        <span className="h-px flex-1 bg-white/10" />
+      </div>
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {lessons.map((lesson, i) => (
+          <LessonCard key={lesson.id} lesson={lesson} index={i} />
+        ))}
+      </div>
+    </section>
   );
 }
